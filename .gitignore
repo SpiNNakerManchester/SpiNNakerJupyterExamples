@@ -1,2 +1,4 @@
 /.project
 /.pydevproject
+.ipynb_checkpoints
+.pytest_cache
