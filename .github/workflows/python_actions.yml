@@ -59,8 +59,8 @@ jobs:
     - name: Setup
       uses: ./support/actions/run-install
 
-    - name: Setup PyNN
-      uses: ./support/actions/pynn-setup
+    #- name: Setup PyNN
+    #  uses: ./support/actions/pynn-setup
 
     - name: Create a spynnaker.cfg
       uses: ./support/actions/configure-spynnaker
