@@ -35,6 +35,7 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v4
+
     - name: Checkout SupportScripts
       uses: actions/checkout@v4
       with:
@@ -43,8 +44,23 @@ jobs:
 
     - name: Install pip, etc
       uses: ./support/actions/python-tools
-    - name: Install test stuff
+
+    - name: Install nbmake
       run: pip install pytest nbmake
+
+    - name: Install Spinnaker Dependencies
+      uses: ./support/actions/install-spinn-deps
+      with:
+        repositories: >
+          SpiNNUtils SpiNNMachine SpiNNMan PACMAN spalloc
+          SpiNNFrontEndCommon sPyNNaker TestBase
+        install: true
+
+    - name: Setup
+      uses: ./support/actions/run-install
+
+    #- name: Setup PyNN
+    #  uses: ./support/actions/pynn-setup
 
     - name: Test with nbmake
       run: pytest --nbmake **/*ipynb
