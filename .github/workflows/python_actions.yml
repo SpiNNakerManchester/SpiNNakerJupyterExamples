@@ -59,8 +59,13 @@ jobs:
     - name: Setup
       uses: ./support/actions/run-install
 
-    #- name: Setup PyNN
-    #  uses: ./support/actions/pynn-setup
+    - name: Setup PyNN
+      uses: ./support/actions/pynn-setup
+
+    - name: Create a spynnaker.cfg
+      uses: ./support/actions/configure-spynnaker
+      with:
+        virtual: true
 
     - name: Test with nbmake
       run: pytest --nbmake **/*ipynb
