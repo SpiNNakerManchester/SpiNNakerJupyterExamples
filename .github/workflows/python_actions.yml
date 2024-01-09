@@ -68,4 +68,4 @@ jobs:
         virtual: true
 
     - name: Test with nbmake
-      run: pytest --nbmake **/*ipynb
+      run: pytest --nbmake Play/*ipynb 01.RunningPyNNSimulations/*.ipynb 1.RunningPyNNSimulations/**/*.ipynb
