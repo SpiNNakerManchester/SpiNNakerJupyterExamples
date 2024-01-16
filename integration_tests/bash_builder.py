@@ -62,4 +62,4 @@ class BashBuilder(object):
 
 if __name__ == '__main__':
     builder = BashBuilder()
-    builder.build_bash(["Setup.ipynb", "task5-solutions.ipynb"])
+    builder.build_bash(["task5-solutions.ipynb", "LiveInputAndOutput.ipynb"])
