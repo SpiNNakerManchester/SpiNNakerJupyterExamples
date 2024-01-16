@@ -68,7 +68,7 @@ jobs:
         virtual: true
 
     - name: test setup
-    - pytest --nbmake 00.Setup/Setup.ipynb
+    - run: pytest --nbmake 00.Setup/Setup.ipynb
 
     - name: Build test bash
       run: python integration_tests/bash_builder.py
