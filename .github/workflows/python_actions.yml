@@ -67,5 +67,8 @@ jobs:
       with:
         virtual: true
 
+    - name: Build test bash
+      run: python integration_tests/bash_builder.py
+
     - name: Test with nbmake
-      run: pytest --nbmake Play/*ipynb 01.RunningPyNNSimulations/*.ipynb 01.RunningPyNNSimulations/**/*.ipynb
+      run: bash integration_tests/pytest.bash
