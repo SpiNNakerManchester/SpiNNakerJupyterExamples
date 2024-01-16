@@ -32,6 +32,8 @@ class BashBuilder(object):
         """
         for a_script in os.listdir(a_dir):
             script_path = os.path.join(a_dir, a_script)
+            if script_path in exceptions:
+                continue
             if os.path.isdir(script_path) and not a_script.startswith("."):
                 self.add_scripts(
                     script_path, prefix_len, test_file, exceptions)
@@ -42,8 +44,9 @@ class BashBuilder(object):
                 if platform.system() == "Windows":
                     local_path = local_path.replace("\\", "/")
                 if a_script not in exceptions:
+                    test_file.write("pytest --nbmake ")
                     test_file.write(local_path)
-                    test_file.write(" ")
+                    test_file.write("\n")
 
     def build_bash(self, exceptions):
         class_file = sys.modules[self.__module__].__file__
@@ -55,11 +58,10 @@ class BashBuilder(object):
         copyfile(header, test_script)
 
         with open(test_script, "a", encoding="utf-8") as test_file:
-            test_file.write("pytest --nbmake ")
             self.add_scripts(repository_dir, len(repository_dir) + 1,
                              test_file, exceptions)
 
 
 if __name__ == '__main__':
     builder = BashBuilder()
-    builder.build_bash(["task5-solutions.ipynb", "LiveInputAndOutput.ipynb"])
+    builder.build_bash([])
