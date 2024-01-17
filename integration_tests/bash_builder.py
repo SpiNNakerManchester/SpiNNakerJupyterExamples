@@ -64,4 +64,6 @@ class BashBuilder(object):
 
 if __name__ == '__main__':
     builder = BashBuilder()
-    builder.build_bash([])
+    builder.build_bash([
+        "01.RunningPyNNSimulations/solutions/task5-solutions.ipynb",
+        "02.LiveInputAndOutput/LiveInputAndOutput.ipynb"])
