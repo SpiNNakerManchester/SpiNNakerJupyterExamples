@@ -32,13 +32,13 @@ class BashBuilder(object):
         """
         for a_script in os.listdir(a_dir):
             script_path = os.path.join(a_dir, a_script)
-            if script_path in exceptions:
-                continue
             if os.path.isdir(script_path) and not a_script.startswith("."):
                 self.add_scripts(
                     script_path, prefix_len, test_file, exceptions)
             elif a_script.endswith(".ipynb") and a_script != "__init__.py":
                 local_path = script_path[prefix_len:]
+                if local_path in exceptions:
+                    continue
                 # As the paths are written to strings in files
                 # Windows needs help!
                 if platform.system() == "Windows":
