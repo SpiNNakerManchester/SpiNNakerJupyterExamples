@@ -79,7 +79,7 @@ jobs:
     - name: Lint with pylint
       uses: ./support/actions/pylint
       with:
-        package: ${{integration_tests spinnaker_jupyter_examples}}
+        package: integration_tests spinnaker_jupyter_examples
         exitcheck: 31 # Action fails on any message
         language: en_GB
 
