@@ -30,9 +30,9 @@ class BashBuilder(object):
         :param io.TextIOBase test_file:
         :param dict(str,str) exceptions:
         """
+        import sys
+        a = sys.version_info
         # for some reason python 3.8 passes an empty string here
-#        if not a_dir:
-#            return
         for a_script in os.listdir(a_dir):
             script_path = os.path.join(a_dir, a_script)
             if os.path.isdir(script_path) and not a_script.startswith("."):
@@ -53,10 +53,10 @@ class BashBuilder(object):
 
     def build_bash(self, exceptions):
         class_file = sys.modules[self.__module__].__file__
+        raise Exception(class_file)
         integration_dir = os.path.dirname(class_file)
         repository_dir = os.path.dirname(integration_dir)
 
-        print(class_file, integration_dir, repository_dir)
         test_script = os.path.join(integration_dir, "pytest.bash")
         header = os.path.join(integration_dir, "header.bash")
         copyfile(header, test_script)
