@@ -25,6 +25,8 @@ class BashBuilder(object):
 
     def add_scripts(self, a_dir, prefix_len, test_file, exceptions):
         """
+        Adds a test(s) for a single file or to all in a directory
+
         :param str a_dir:
         :param int prefix_len:
         :param io.TextIOBase test_file:
@@ -49,6 +51,11 @@ class BashBuilder(object):
                     test_file.write("\n")
 
     def build_bash(self, exceptions):
+        """
+        Creates a bash file to run nbmake on all notebooks
+
+        :param exceptions: List of notebooks not to include
+        """
         class_file = sys.modules[self.__module__].__file__
         # Ned this for python 3.8
         class_file = os.path.abspath(class_file)
