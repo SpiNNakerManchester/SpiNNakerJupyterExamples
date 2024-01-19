@@ -25,7 +25,7 @@ jobs:
     timeout-minutes: 10
     strategy:
       matrix:
-        python-version: ["3.12"]
+        python-version: [3.8, 3.9, "3.10", "3.11", "3.12"]
 
     steps:
     - name: Set up Python ${{ matrix.python-version }}
@@ -67,5 +67,20 @@ jobs:
       with:
         virtual: true
 
+    - name: Build test bash
+      run: python integration_tests/bash_builder.py
+
     - name: Test with nbmake
-      run: pytest --nbmake **/*ipynb
+      run: bash integration_tests/pytest.bash
+
+    - name: Lint with flake8
+      run: flake8 integration_tests spinnaker_jupyter_examples
+
+    - name: Lint with pylint
+      uses: ./support/actions/pylint
+      with:
+        package: integration_tests spinnaker_jupyter_examples
+        exitcheck: 31 # Action fails on any message
+        language: en_GB
+
+
