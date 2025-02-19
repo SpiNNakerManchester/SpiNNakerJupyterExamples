@@ -43,7 +43,7 @@ jobs:
         path: support
 
     - name: Install pip, etc
-      uses: ./support/actions/python-tools
+      uses: SpiNNakerManchester/SupportScripts/actions/python-tools@main
 
     - name: Install nbmake
       run: pip install pytest nbmake
