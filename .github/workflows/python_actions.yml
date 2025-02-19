@@ -63,7 +63,7 @@ jobs:
     #  uses: ./support/actions/pynn-setup
 
     - name: Create a spynnaker.cfg
-      uses: ./support/actions/configure-spynnaker
+      uses: SpiNNakerManchester/SupportScripts/actions/configure-spynnaker@action-dash
       with:
         virtual: true
 
