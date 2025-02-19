@@ -57,7 +57,7 @@ jobs:
         install: true
 
     - name: Setup
-      uses: ./support/actions/run-install
+      uses: SpiNNakerManchester/SupportScripts/actions/run-install@action-dash
 
     #- name: Setup PyNN
     #  uses: ./support/actions/pynn-setup
